@@ -1,10 +1,21 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
+import 'package:local/utils/network_utils.dart';
 import 'package:local/view/home/home_screen.dart';
 
+// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+//   await Firebase.initializeApp();
+//   print('Handling a background message ${message.messageId}');
+// }
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+ // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
   var delegate = await LocalizationDelegate.create(
       fallbackLocale: 'en_US', supportedLocales: ['en_US', 'es', 'fa', 'ar']);
 
@@ -35,9 +46,12 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
-  final String? title;
+class MyHomePage extends StatefulWidget  with WidgetsBindingObserver{
+  MyHomePage({Key? key}) : super(key: key){
+    WidgetsBinding.instance!.addObserver(this);
+    NetworkUtils.streamSubscribeConnectivityListener();
+  }
+
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
