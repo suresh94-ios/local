@@ -7,6 +7,8 @@ import 'package:flutter_translate/flutter_translate.dart';
 import 'package:local/utils/network_utils.dart';
 import 'package:local/view/home/home_screen.dart';
 
+import 'custom_paint_learning.dart';
+
 // Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 //   await Firebase.initializeApp();
 //   print('Handling a background message ${message.messageId}');
@@ -37,10 +39,17 @@ class MyApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           localizationDelegate
         ],
+        builder: (BuildContext context, Widget? child) {
+          final MediaQueryData data = MediaQuery.of(context);
+          return MediaQuery(
+            data: data.copyWith(textScaleFactor: 1),
+            child: child!,
+          );
+        },
         supportedLocales: localizationDelegate.supportedLocales,
         locale: localizationDelegate.currentLocale,
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: MyHomePage(),
+        home: CustomPaintLearning(),
       ),
     );
   }

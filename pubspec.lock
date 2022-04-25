@@ -411,6 +411,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
+  svg_path_parser:
+    dependency: "direct main"
+    description:
+      name: svg_path_parser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.1"
   term_glyph:
     dependency: transitive
     description:
@@ -432,6 +439,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.8.0"
+  touchable:
+    dependency: "direct main"
+    description:
+      name: touchable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   typed_data:
     dependency: transitive
     description:
